@@ -1,0 +1,8 @@
+<%= simple_form_for @article do |f| %>
+  <%= f.input :url %>
+  <%= f.input :title %>
+  <%= f.association :source %>
+  <%= f.input :text %>
+  <%= f.input :image %>
+  <%= f.button :submit %>
+<% end %>

@@ -4,12 +4,20 @@
     <title>Velloa</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
   <body>
-    <%= image_tag 'logo.svg', alt: 'Velloa' %>
-    <%= yield %>
+    <nav>
+      <%= link_to root_path do %>
+        <%= image_tag 'logo.svg', alt: 'Velloa' %>
+      <% end %>
+      <%= link_to 'Articles', articles_path %>
+      <%= link_to 'Sources', sources_path %>
+    </nav>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>
