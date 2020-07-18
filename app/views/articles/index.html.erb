@@ -1,4 +1,13 @@
-<%= link_to 'New Article', new_article_path %>
+<%= simple_form_for Article.new do |f| %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.input :url, as: :string, placeholder: 'URL', label: false %>
+    </div>
+    <div class="col-md-2">
+      <%= f.button :submit, class: 'btn-block' %>
+    </div>
+  </div>
+<% end %>
 
 <div class="row">
   <% @articles.each do |article| %>

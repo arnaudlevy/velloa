@@ -1,14 +1,15 @@
-<p id="notice"><%= notice %></p>
-
+<h1><%= @source %></h1>
 <p>
-  <strong>Name:</strong>
-  <%= @source.name %>
-</p>
-
-<p>
-  <strong>Url:</strong>
   <%= @source.url %>
 </p>
-
-<%= link_to 'Edit', edit_source_path(@source) %> |
-<%= link_to 'Back', sources_path %>
+<%= link_to 'Edit', edit_source_path(@source), class: 'btn' %>
+<div class="row">
+  <% @source.articles.each do |article| %>
+    <div class="col-md-2">
+      <%= link_to article do %>
+        <td><%= image_tag article.image, class: 'img-fluid' %></td>
+        <h2><%= article %></h2>
+      <% end %>
+    </div>
+  <% end %>
+</div>

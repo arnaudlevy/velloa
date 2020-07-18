@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Velloa</title>
+    <title><%= content_for?(:title) ? yield(:title) : 'Velloa' %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -13,8 +13,6 @@
       <%= link_to root_path do %>
         <%= image_tag 'logo.svg', alt: 'Velloa' %>
       <% end %>
-      <%= link_to 'Articles', articles_path %>
-      <%= link_to 'Sources', sources_path %>
     </nav>
     <div class="container-fluid">
       <%= yield %>
