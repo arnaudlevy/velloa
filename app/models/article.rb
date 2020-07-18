@@ -24,6 +24,10 @@ class Article < ApplicationRecord
 
   before_validation :build_from_url
 
+  def to_s
+    "#{title}"
+  end
+
   protected
 
   def build_from_url
