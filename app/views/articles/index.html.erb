@@ -1,9 +1,9 @@
 <%= simple_form_for Article.new do |f| %>
   <div class="row mb-3">
-    <div class="col-md-11">
+    <div class="col-md-10">
       <%= f.input :url, as: :string, placeholder: 'URL', label: false %>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-2">
       <%= f.button :submit, 'Enregistrer', class: 'btn-block' %>
     </div>
   </div>

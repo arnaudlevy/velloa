@@ -1,19 +1,18 @@
 <% content_for :title, "#{@article}" %>
 <div class="row">
-  <div class="offset-md-2 col-md-4">
+  <div class="col-md-3">
     <%= image_tag @article.image, class: 'img-fluid' %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <h1><%= @article %></h1>
+  </div>
+  <div class="col-md-3">
     <%= simple_format @article.text %>
-
-    <p>
-      <%= link_to @article.url, @article.url, target: :_blank %>
-    </p>
-    <p>
-      <%= link_to @article.source, @article.source %>
-    </p>
-    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm' %>
-    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm' %>
+  </div>
+  <div class="col-md-3">
+    <p><%= link_to @article.url, @article.url, target: :_blank %></p>
+    <p><%= link_to @article.source, @article.source %></p>
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-sm btn-primary' %>
+    <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
   </div>
 </div>
