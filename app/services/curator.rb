@@ -17,18 +17,21 @@ class Curator
   end
 
   def title
-    json_ld ? json_ld['headline']
-            : metainspector.best_title
+    if json_ld.any?
+      json_ld.each do |ld|
+        return ld['headline'] if ld.has_key? 'headline'
+      end
+    end
+    metainspector.best_title
   end
 
   def image
-    if json_ld
-      if json_ld.has_key? 'image'
-        image = json_ld['image']
-        if image.is_a? Array
-          return image.first
-        else
-          return image['url']
+    if json_ld.any?
+      json_ld.each do |ld|
+        if ld.has_key? 'image'
+          image = ld['image']
+          return image.first if image.is_a? Array
+          return image['url'] if image.is_a? Hash
         end
       end
     end
@@ -36,28 +39,23 @@ class Curator
   end
 
   def text
-    unless @text
-      if json_ld
-        if json_ld.has_key? 'text'
-          @text = json_ld['text']
-        elsif json_ld.has_key? 'articleBody'
-          @text = json_ld['articleBody']
-        else
-          @text = json_ld.to_s
-        end
-      else
-        @text = ''
-        h = html.dup
-        BLACKLIST.each do |tag|
-          h.css(tag).remove
-        end
-        nodes = h.css('p')
-        nodes.xpath('//style').remove
-        @text = nodes.to_html
-        @text.gsub!('<br><br>', '<br>')
+    if json_ld.any?
+      json_ld.each do |ld|
+        next unless ld['@type'] == 'NewsArticle'
+        return ld['text'] if ld.has_key? 'text'
+        return ld['articleBody'] if ld.has_key? 'articleBody'
       end
     end
-    @text
+    text = ''
+    h = html.dup
+    BLACKLIST.each do |tag|
+      h.css(tag).remove
+    end
+    nodes = h.css('p')
+    nodes.xpath('//style').remove
+    text = nodes.to_html
+    text.gsub!('<br><br>', '<br>')
+    text
   end
 
   def html
@@ -68,10 +66,14 @@ class Curator
 
   def json_ld
     unless @json_ld
+      @json_ld = []
       begin
-        data = html.css('[type="application/ld+json"]').first
-        string = data.inner_text
-        @json_ld = JSON.parse string
+        options = html.css('[type="application/ld+json"]')
+        options.each do |option|
+          string = option.inner_text
+          hash = JSON.parse(string)
+          @json_ld << hash
+        end
       rescue
         puts "JSON LD error"
       end
