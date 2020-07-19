@@ -5,8 +5,14 @@
     <% @sources.each do |source| %>
     <div class="col-md-2">
       <%= link_to source do %>
-      <%= image_tag source.image, class: 'img-fluid img-fill mt-2' unless source.image.nil? %>
-      <p class="mt-2"><%= source %></p>
+        <article class="sources__source">
+          <h1><%= source %></h1>
+          <% unless source.image.nil? %>
+            <div class="sources__source__image">
+              <%= image_tag source.image %>
+            </div>
+          <% end %>
+        </article>
       <% end %>
     </div>
     <% end %>

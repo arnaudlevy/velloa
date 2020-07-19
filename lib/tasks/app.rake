@@ -12,7 +12,6 @@ namespace :app do
         'There were some warnings or errors while restoring'
       end
       sh 'rails db:migrate'
-      sh 'rails db:seed'
     end
   end
 end
