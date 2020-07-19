@@ -13,7 +13,7 @@ class Curator
   ]
 
   def initialize(url)
-    @url = url
+    @url = url.split('?').first
   end
 
   def title
