@@ -1,6 +1,8 @@
 .source
   .card-columns
     column-count: 4
+    @include media-breakpoint-down(md)
+      column-count: 2
   .article
     .article__source
       display: none
