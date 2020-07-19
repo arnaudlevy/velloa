@@ -1,10 +1,14 @@
-<h1>Sources</h1>
-
-<div class="row">
-  <% @sources.each do |source| %>
-  <div class="col-md-1">
-    <%= image_tag source.image, class: 'img-fluid img-fill' unless source.image.nil? %>
-    <%= link_to source, source %>
+<% content_for :title, "Sources" %>
+<div class="sources">
+  <header><h1>Sources</h1></header>
+  <div class="row">
+    <% @sources.each do |source| %>
+    <div class="col-md-2">
+      <%= link_to source do %>
+      <%= image_tag source.image, class: 'img-fluid img-fill mt-2' unless source.image.nil? %>
+      <p class="mt-2"><%= source %></p>
+      <% end %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
 </div>

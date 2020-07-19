@@ -1,23 +1,16 @@
-<%= simple_form_for Article.new, url: from_url_articles_path do |f| %>
-  <div class="row mb-3">
-    <div class="col-md-10">
-      <%= f.input :url, as: :string, placeholder: 'URL', label: false %>
+<div class="articles">
+  <header>
+    <h1>Articles</h1>
+    <%= simple_form_for Article.new, url: from_url_articles_path do |f| %>
+    <div class="row">
+      <div class="offset-md-4 col-md-4">
+        <%= f.input :url, as: :string, placeholder: 'URL', label: false %>
+        <%= f.button :submit, 'Importer' %>
+      </div>
     </div>
-    <div class="col-md-2">
-      <%= f.button :submit, 'Enregistrer', class: 'btn-block' %>
-    </div>
+    <% end %>
+  </header>
+  <div class="card-columns">
+    <%= render @articles %>
   </div>
-<% end %>
-
-<div class="card-columns articles">
-  <% @articles.each do |article| %>
-    <div class="card border-0 articles__article">
-      <%= link_to article do %>
-        <%= image_tag article.image, class: 'img-fluid img-fill' %>
-        <p><%= article %></p>
-        <p class="articles__article__source"><%= link_to article.source, article.source %></p>
-      <% end %>
-      <hr>
-    </div>
-  <% end %>
 </div>

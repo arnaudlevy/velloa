@@ -12,6 +12,8 @@
 class Source < ApplicationRecord
   has_many :articles
 
+  default_scope { order(:name) }
+
   def self.from_url(url)
     uri = URI(url)
     domain = "#{uri.scheme}://#{uri.host}"

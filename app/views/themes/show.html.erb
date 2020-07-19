@@ -1,0 +1,11 @@
+<% content_for :title, "#{@theme}" %>
+
+<div class="theme">
+  <header>
+    <h1><%= @theme %></h1>
+    <%= link_to 'Edit', edit_theme_path(@theme) %>
+  </header>
+  <div class="card-columns">
+    <%= render @theme.articles %>
+  </div>
+</div>

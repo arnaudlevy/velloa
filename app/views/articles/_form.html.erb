@@ -1,8 +1,17 @@
 <%= simple_form_for @article do |f| %>
-  <%= f.input :url %>
-  <%= f.input :title %>
-  <%= f.association :source %>
-  <%= f.input :text %>
-  <%= f.input :image %>
-  <%= f.button :submit %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.input :url, as: :string %>
+      <%= f.input :image, as: :string %>
+      <%= f.association :source, include_blank: false %>
+      <%= f.button :submit %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :title %>
+      <%= f.input :text, input_html: { rows: 30 }%>
+    </div>
+    <div class="col-md-3">
+      <%= f.association :themes, as: :check_boxes %>
+    </div>
+  </div>
 <% end %>

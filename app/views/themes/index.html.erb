@@ -1,0 +1,15 @@
+<% content_for :title, "Thèmes" %>
+
+<div class="themes">
+  <header>
+    <h1>Thèmes</h1>
+    <%= link_to 'New Theme', new_theme_path %>
+  </header>
+  <div class="row">
+    <% @themes.each do |theme| %>
+    <div class="col-md-3">
+      <h2><%= link_to theme, theme %></h2>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_070209) do
+ActiveRecord::Schema.define(version: 2020_07_19_082729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,26 @@ ActiveRecord::Schema.define(version: 2020_07_19_070209) do
     t.index ["source_id"], name: "index_articles_on_source_id"
   end
 
+  create_table "articles_themes", id: false, force: :cascade do |t|
+    t.bigint "theme_id", null: false
+    t.bigint "article_id", null: false
+    t.index ["article_id", "theme_id"], name: "index_articles_themes_on_article_id_and_theme_id"
+    t.index ["theme_id", "article_id"], name: "index_articles_themes_on_theme_id_and_article_id"
+  end
+
   create_table "sources", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "image"
+  end
+
+  create_table "themes", force: :cascade do |t|
+    t.string "name"
+    t.text "keywords"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
