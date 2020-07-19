@@ -30,5 +30,27 @@
     <div class="container-fluid">
       <%= yield %>
     </div>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-1">
+            <%= link_to root_path do %>
+              <%= image_tag 'favicon.png', class: 'icon' %>
+            <% end %>
+          </div>
+          <div class="offset-md-4 col-md-1">
+            <%= image_tag 'patriciaroche.jpg', class: 'img-fluid rounded-circle' %>
+          </div>
+          <div class="col-md-4">
+            <p class="description">
+              En finnois, “velloa” signifie mouvement de l'eau et des vagues. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non posuere sem. Vestibulum purus elit, iaculis sit amet scelerisque quis, mollis gravida sem. Proin varius, ipsum a condimentum vulputate, justo mi euismod mauris, sit amet sodales est felis non nisi. Sed venenatis efficitur rutrum. Nullam blandit egestas lorem a mollis.
+            </p>
+            <p class="author">
+              Un projet porté par <a href="https://patriciaroche.fr" target="_blank">Patricia Roche</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
