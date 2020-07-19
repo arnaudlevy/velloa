@@ -17,26 +17,30 @@ class Curator
   end
 
   def title
-    @title ||= metainspector.best_title
+    json_ld ? json_ld['headline']
+            : metainspector.best_title
   end
 
   def image
-    @image ||= metainspector.images.best
+    json_ld ? json_ld['image']['url']
+            : metainspector.images.best
   end
 
   def text
     unless @text
-      @text = ''
-      h = html.dup
-
-      BLACKLIST.each do |tag|
-        h.css(tag).remove
+      if json_ld
+        json_ld['text']
+      else
+        @text = ''
+        h = html.dup
+        BLACKLIST.each do |tag|
+          h.css(tag).remove
+        end
+        nodes = h.css('p')
+        nodes.xpath('//style').remove
+        @text = nodes.to_html
+        @text.gsub!('<br><br>', '<br>')
       end
-
-      nodes = h.css('p')
-      nodes.xpath('//style').remove
-      @text = nodes.to_html
-      @text.gsub!('<br><br>', '<br>')
     end
     @text
   end
@@ -47,6 +51,19 @@ class Curator
     puts "Nokogiri error"
   end
 
+  def json_ld
+    unless @json_ld
+      begin
+        data = html.css('[type="application/ld+json"]').first
+        string = data.inner_text
+        @json_ld = JSON.parse string
+      rescue
+        puts "JSON LD error"
+      end
+    end
+    @json_ld
+  end
+
   def data
     require 'open-uri'
     URI.open url
@@ -55,6 +72,8 @@ class Curator
   end
 
   def metainspector
-    @metainspector ||= MetaInspector.new self.url
+    @metainspector ||= MetaInspector.new url
+  rescue
+    puts "MetaInspector error"
   end
 end
