@@ -1,12 +1,19 @@
-nav
+.navbar
   margin-bottom: 100px
-  img
-    display: block
-    margin: 10px auto
-    width: 200px
+  padding-top: 80px !important
+  .navbar-brand
+    position: absolute
+    left: 50%
+    top: 20px
+    margin-left: -100px
+    img
+      display: block
+      width: 200px
   a
     font-family: $sans
     text-transform: uppercase
+    font-size: 14px
+    text-align: center
 h1
   font-style: italic
   text-rendering: geometricPrecision
@@ -24,7 +31,7 @@ hr
   border-bottom: 1px dotted #000000
 footer
   margin-top: 100px
-  padding: 100px 0
+  padding: 60px 0
   background: black
   &, & a
     color: white

@@ -15,11 +15,17 @@
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag 'logo.svg', alt: 'Velloa' %>
       <% end %>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler m-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav m-auto">
           <li class="nav-item"><%= link_to 'Accueil', root_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Articles', articles_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Sources', sources_path, class: 'nav-link' %></li>
