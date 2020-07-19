@@ -25,6 +25,8 @@ class Article < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
+  after_save :find_themes
+
   def self.from_url(url)
     curator = Curator.new url
     article = where(url: url).first_or_initialize
@@ -38,5 +40,13 @@ class Article < ApplicationRecord
 
   def to_s
     "#{title}"
+  end
+
+  protected
+
+  def find_themes
+    Theme.all.each do |theme|
+      themes << theme if theme.seems_to_relate_to? self
+    end
   end
 end

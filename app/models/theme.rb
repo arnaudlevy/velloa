@@ -13,7 +13,22 @@ class Theme < ApplicationRecord
 
   default_scope { order(:name) }
 
+  def seems_to_relate_to?(article)
+    string = "#{article.title} #{article.text}".downcase
+    keywords_array.each do |keyword|
+      k = keyword.strip.downcase
+      return true if k.in? string
+    end
+    false
+  end
+
   def to_s
     "#{name}"
+  end
+
+  protected
+
+  def keywords_array
+    keywords.to_s.split(',')
   end
 end
