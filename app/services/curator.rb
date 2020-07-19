@@ -26,16 +26,9 @@ class Curator
   end
 
   def image
-    if json_ld.any?
-      json_ld.each do |ld|
-        if ld.has_key? 'image'
-          image = ld['image']
-          return image.first if image.is_a? Array
-          return image['url'] if image.is_a? Hash
-        end
-      end
-    end
-    metainspector.images.best
+    @image = find_image
+    @image = @image.gsub('http://', 'https://')
+    @image
   end
 
   def text
@@ -56,6 +49,21 @@ class Curator
     text = nodes.to_html
     text.gsub!('<br><br>', '<br>')
     text
+  end
+
+  protected
+
+  def find_image
+    if json_ld.any?
+      json_ld.each do |ld|
+        if ld.has_key? 'image'
+          image = ld['image']
+          return image.first if image.is_a? Array
+          return image['url'] if image.is_a? Hash
+        end
+      end
+    end
+    metainspector.images.best
   end
 
   def html

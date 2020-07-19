@@ -45,6 +45,7 @@ class Article < ApplicationRecord
   protected
 
   def find_themes
+    return if themes.any?
     Theme.all.each do |theme|
       themes << theme if theme.seems_to_relate_to? self
     end
