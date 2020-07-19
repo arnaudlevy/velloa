@@ -17,8 +17,8 @@ class Source < ApplicationRecord
     domain = "#{uri.scheme}://#{uri.host}"
     source = where(url: domain).first_or_initialize
     curator = Curator.new domain
-    source.name = curator.title
-    source.image = curator.image
+    source.name = curator.title if source.name.nil?
+    source.image = curator.image if source.image.nil?
     source.save
     source
   end
