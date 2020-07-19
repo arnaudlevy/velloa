@@ -5,7 +5,9 @@
     <h1><%= @theme %></h1>
     <%= link_to 'Edit', edit_theme_path(@theme) %>
   </header>
-  <div class="card-columns">
-    <%= render @theme.articles %>
+  <div class="articles">
+    <div class="card-columns">
+      <%= render @theme.articles %>
+    </div>
   </div>
 </div>

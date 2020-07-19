@@ -11,8 +11,10 @@
       <p><%= link_to @source.url, @source.url, target: :_blank %></p>
     </div>
     <div class="offset-md-1 col-md-9">
-      <div class="card-columns">
-        <%= render @source.articles %>
+      <div class="articles">
+        <div class="card-columns">
+          <%= render @source.articles %>
+        </div>
       </div>
     </div>
   </div>

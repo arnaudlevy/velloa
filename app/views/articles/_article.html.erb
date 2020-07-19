@@ -2,7 +2,14 @@
   <%= link_to article do %>
     <%= image_tag article.image, class: 'img-fluid img-fill' %>
     <h1><%= article %></h1>
-    <p class="article__source"><%= link_to article.source, article.source %></p>
+    <p class="article__source">
+      <%= link_to article.source, article.source %>
+    </p>
+    <ul class="article__themes list-unstyled">
+      <% article.themes.each do |theme| %>
+        <li><%= link_to theme, theme %></li>
+      <% end %>
+    </ul>
   <% end %>
   <hr>
 </article>

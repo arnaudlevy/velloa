@@ -3,7 +3,6 @@
   h1
     margin-bottom: 40px
     font-weight: 400
-  img
   &__meta
     text-align: right
     font-family: $sans
@@ -22,13 +21,24 @@
   &__source
     font-family: $sans
     font-size: 12px
-
+  &__themes
+    li
+      background: black
+      display: inline-block
+      font-family: $sans
+      font-size: 10px
+      font-weight: bold
+      text-transform: uppercase
+      a
+        color: white
+        padding: 4px
 .articles
   .card-columns
     column-count: 6
   .article
     h1
       font-size: 20px
+      margin-bottom: 10px
     img
       filter: grayscale(1)
       margin-bottom: 20px
