@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-2">
       <%= image_tag @source.image, class: 'img-fluid img-fill' unless @source.image.nil? %>
-      <p><%= link_to @source.url, @source.url, target: :_blank %></p>
+      <p class="small mt-4"><%= link_to @source.url, @source.url, target: :_blank %></p>
     </div>
     <div class="offset-md-1 col-md-9">
       <div class="articles">
