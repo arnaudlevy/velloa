@@ -1,4 +1,4 @@
-<%= simple_form_for Article.new do |f| %>
+<%= simple_form_for Article.new, url: from_url_articles_path do |f| %>
   <div class="row mb-3">
     <div class="col-md-10">
       <%= f.input :url, as: :string, placeholder: 'URL', label: false %>
@@ -9,15 +9,15 @@
   </div>
 <% end %>
 
-<div class="row">
+<div class="card-columns articles">
   <% @articles.each do |article| %>
-    <div class="col-md-2 ">
-      <div class="articles__article">
-        <%= link_to article do %>
-          <td><%= image_tag article.image, class: 'img-fluid' %></td>
-          <h2><%= article %></h2>
-        <% end %>
-      </div>
+    <div class="card border-0 articles__article">
+      <%= link_to article do %>
+        <%= image_tag article.image, class: 'img-fluid img-fill' %>
+        <p><%= article %></p>
+        <p class="articles__article__source"><%= link_to article.source, article.source %></p>
+      <% end %>
+      <hr>
     </div>
   <% end %>
 </div>

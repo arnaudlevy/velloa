@@ -5,8 +5,8 @@
   <% @source.articles.each do |article| %>
     <div class="col-md-2">
       <%= link_to article do %>
-        <td><%= image_tag article.image, class: 'img-fluid' %></td>
-        <h2><%= article %></h2>
+        <%= image_tag article.image, class: 'img-fluid' %>
+        <p><%= article %></p>
       <% end %>
     </div>
   <% end %>

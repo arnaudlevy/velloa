@@ -22,30 +22,18 @@
 class Article < ApplicationRecord
   belongs_to :source
 
-  before_validation :build_from_url
+  def self.from_url(url)
+    curator = Curator.new url
+    article = where(url: url).first_or_initialize
+    article.title = curator.title
+    article.text = curator.text
+    article.image = curator.image
+    article.source = Source.from_url url
+    article.save
+    article
+  end
 
   def to_s
     "#{title}"
-  end
-
-  protected
-
-  def build_from_url
-    self.title = metainspector.best_title if title.nil?
-    self.text = metainspector.best_description if text.nil?
-    self.image = metainspector.images.best if image.nil?
-    if source.nil?
-      uri = URI(url)
-      source_url = "#{uri.scheme}://#{uri.host}"
-      source = Source.where(url: source_url).first_or_initialize
-      source_mi = MetaInspector.new source_url
-      source.name = source_mi.best_title
-      source.save
-      self.source = source
-    end
-  end
-
-  def metainspector
-    @metainspector ||= MetaInspector.new self.url
   end
 end

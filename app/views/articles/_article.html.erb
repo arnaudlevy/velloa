@@ -1,0 +1,7 @@
+<div class="articles__article">
+  <%= link_to article do %>
+    <%= image_tag article.image, class: 'img-fluid' %>
+    <p><%= article %></p>
+    <p class="small text-muted"><%= link_to article.source, article.source %></p>
+  <% end %>
+</div>
