@@ -4,11 +4,6 @@
     margin-bottom: 40px
     font-weight: 400
   img
-    filter: grayscale(1)
-    transition: filter 0.5s
-    margin-bottom: 20px
-    &:hover
-      filter: none
   &__meta
     text-align: right
     font-family: $sans
@@ -34,3 +29,9 @@
   .article
     h1
       font-size: 20px
+    img
+      filter: grayscale(1)
+      margin-bottom: 20px
+      transition: filter 0.5s
+      &:hover
+        filter: none

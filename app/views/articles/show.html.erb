@@ -1,7 +1,7 @@
 <% content_for :title, "#{@article}" %>
 <div class="article">
   <div class="row">
-    <div class="offset-md-1 col-md-3 article__meta">
+    <div class="offset-md-2 col-md-3 article__meta">
       <%= image_tag @article.image, class: 'img-fluid img-fill' %>
       <h2>Date</h2>
       <p><%= l @article.created_at.to_date %></p>
