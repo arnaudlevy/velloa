@@ -13,7 +13,7 @@ class Curator
   ]
 
   def initialize(url)
-    @url = url.split('?').first
+    @url = url
   end
 
   def title
@@ -22,14 +22,29 @@ class Curator
   end
 
   def image
-    json_ld ? json_ld['image']['url']
-            : metainspector.images.best
+    if json_ld
+      if json_ld.has_key? 'image'
+        image = json_ld['image']
+        if image.is_a? Array
+          return image.first
+        else
+          return image['url']
+        end
+      end
+    end
+    metainspector.images.best
   end
 
   def text
     unless @text
       if json_ld
-        json_ld['text']
+        if json_ld.has_key? 'text'
+          @text = json_ld['text']
+        elsif json_ld.has_key? 'articleBody'
+          @text = json_ld['articleBody']
+        else
+          @text = json_ld.to_s
+        end
       else
         @text = ''
         h = html.dup

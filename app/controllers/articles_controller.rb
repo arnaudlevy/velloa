@@ -9,7 +9,9 @@ class ArticlesController < ApplicationController
   end
 
   def from_url
-    @article = Article.from_url params[:article][:url]
+    @url = params[:article][:url]
+    @url = @url.split('?').first
+    @article = Article.from_url @url
     redirect_to @article
   end
 
