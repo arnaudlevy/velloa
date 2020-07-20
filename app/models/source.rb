@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Source < ApplicationRecord
-  has_many :articles
+  has_many :articles, dependent: :destroy
 
   default_scope { order(:name) }
 
@@ -19,9 +19,11 @@ class Source < ApplicationRecord
     domain = "#{uri.scheme}://#{uri.host}"
     page = Curation::Page.new domain
     source = where(url: domain).first_or_initialize
-    source.name = page.title if source.name.blank?
-    source.image = page.image if source.image.blank?
-    source.save
+    if source.new_record?
+      source.name = page.title
+      source.image = page.image
+      source.save
+    end
     source
   end
 

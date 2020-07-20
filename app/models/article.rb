@@ -29,9 +29,9 @@ class Article < ApplicationRecord
 
   after_save :find_themes
 
-  def self.from_url(url)
+  def self.from_url(url, html = nil)
     article = where(url: url).first_or_initialize
-    page = Curation::Page.new url
+    page = Curation::Page.new url, html
     article.title = page.title
     article.text = page.text
     article.image = page.image

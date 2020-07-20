@@ -12,7 +12,8 @@ class ArticlesController < ApplicationController
   def from_url
     @url = params[:article][:url]
     @url = @url.split('?').first
-    @article = Article.from_url @url
+    @html = params[:article][:html]
+    @article = Article.from_url @url, @html
     respond_to do |format|
       format.html { redirect_to @article }
       format.json { render json: { article: @article }, status: :ok }
