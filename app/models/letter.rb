@@ -23,6 +23,10 @@ class Letter < ApplicationRecord
     Article.where('articles.created_at >= ? AND articles.created_at <= ?', starting_at.to_date, ending_at.to_date)
   end
 
+  def dates
+    "#{starting_at.strftime '%d/%m'} - #{ending_at.strftime '%d/%m/%Y'}"
+  end
+
   def to_s
     "#{title}"
   end

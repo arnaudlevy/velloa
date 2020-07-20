@@ -1,31 +1,13 @@
-<p id="notice"><%= notice %></p>
+<header>
+  <h1>Lettres</h1>
+  <%= link_to 'New Letter', new_letter_path %>
+</header>
 
-<h1>Letters</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Starting at</th>
-      <th>Ending at</th>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @letters.each do |letter| %>
-      <tr>
-        <td><%= letter.starting_at %></td>
-        <td><%= letter.ending_at %></td>
-        <td><%= letter.title %></td>
-        <td><%= link_to 'Show', letter %></td>
-        <td><%= link_to 'Edit', edit_letter_path(letter) %></td>
-        <td><%= link_to 'Destroy', letter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Letter', new_letter_path %>
+<div class="row">
+  <% @letters.each do |letter| %>
+    <div class="col-md-3">
+      <h2><%= link_to letter, letter %></h2>
+      <p><%= letter.dates %></p>
+    </div>
+  <% end %>
+</div>
