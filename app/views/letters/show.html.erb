@@ -15,10 +15,10 @@
             <p><%= article.analysis %></p>
             <table>
               <tr>
-                <td><%= image_tag article.image, width: 60 %></td>
+                <td style="vertical-align: top;"><%= image_tag article.image, width: 60 %></td>
                 <td style="font-size: 10px; vertical-align: top; padding-left: 10px">
-                  Source: <%= link_to article.source, article.source.url, target: :_blank %><br>
-                  URL: <%= link_to article.url, article.url, target: :_blank %>
+                  <%= link_to article.source, article.source.url, target: :_blank %> |
+                  <%= link_to article.url, article.url, target: :_blank %>
                 </td>
               </tr>
             </table>
