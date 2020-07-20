@@ -1,13 +1,21 @@
 <%= simple_form_for @article do |f| %>
   <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <%= f.input :analysis, as: :text %>
+    </div>
+    <div class="col-md-3">
+      <label>&nbsp;</label><br>
+      <%= f.button :submit, 'Enregistrer' %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3">
       <%= f.input :url, as: :string %>
       <%= f.input :image, as: :string %>
       <%= f.association :source, include_blank: false %>
-      <%= f.button :submit %>
     </div>
     <div class="col-md-6">
-      <%= f.input :title %>
+      <%= f.input :title, as: :text %>
       <%= f.input :text, input_html: { rows: 30 }%>
     </div>
     <div class="col-md-3">

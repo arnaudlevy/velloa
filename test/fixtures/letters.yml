@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: letters
+#
+#  id          :bigint           not null, primary key
+#  ending_at   :date
+#  starting_at :date
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  starting_at: 2020-07-20
+  ending_at: 2020-07-20
+  title: MyString
+
+two:
+  starting_at: 2020-07-20
+  ending_at: 2020-07-20
+  title: MyString

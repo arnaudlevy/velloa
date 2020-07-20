@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_082729) do
+ActiveRecord::Schema.define(version: 2020_07_20_072020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_082729) do
     t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "analysis"
     t.index ["source_id"], name: "index_articles_on_source_id"
   end
 
@@ -31,6 +32,14 @@ ActiveRecord::Schema.define(version: 2020_07_19_082729) do
     t.bigint "article_id", null: false
     t.index ["article_id", "theme_id"], name: "index_articles_themes_on_article_id_and_theme_id"
     t.index ["theme_id", "article_id"], name: "index_articles_themes_on_theme_id_and_article_id"
+  end
+
+  create_table "letters", force: :cascade do |t|
+    t.date "starting_at"
+    t.date "ending_at"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "sources", force: :cascade do |t|

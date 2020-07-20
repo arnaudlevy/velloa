@@ -3,6 +3,7 @@
 # Table name: articles
 #
 #  id         :bigint           not null, primary key
+#  analysis   :text
 #  image      :text
 #  text       :text
 #  title      :string

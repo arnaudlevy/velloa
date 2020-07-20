@@ -21,6 +21,11 @@
   &__source
     font-family: $sans
     font-size: 12px
+  &__analysis
+    font-family: $serif
+    font-style: italic
+    font-size: 24px
+    line-height: 24px
   &__themes
     li
       background: black
@@ -38,8 +43,12 @@
     @include media-breakpoint-down(md)
       column-count: 2
   .article
+    border: none
+    border-top: 1px dotted #000000
+    border-bottom: 1px dotted #000000
+    padding: 15px 0
     h1
-      font-size: 20px
+      font-size: 16px
       margin-bottom: 10px
     img
       filter: grayscale(1)
@@ -47,3 +56,5 @@
       transition: filter 0.5s
       &:hover
         filter: none
+    &__themes
+      margin-bottom: 0
