@@ -29,11 +29,11 @@ class Article < ApplicationRecord
   after_save :find_themes
 
   def self.from_url(url)
-    curator = Curator.new url
     article = where(url: url).first_or_initialize
-    article.title = curator.title
-    article.text = curator.text
-    article.image = curator.image
+    page = Curation::Page.new url
+    article.title = page.title
+    article.text = page.text
+    article.image = page.image
     article.source = Source.from_url url
     article.save
     article
