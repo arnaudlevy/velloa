@@ -24,6 +24,7 @@ class Article < ApplicationRecord
   has_and_belongs_to_many :themes
   belongs_to :source
 
+  scope :for_theme, -> (theme) { joins(:themes).where(themes: { id: theme }) }
   default_scope { order(created_at: :desc) }
 
   after_save :find_themes

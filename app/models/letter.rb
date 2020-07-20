@@ -10,4 +10,20 @@
 #  updated_at  :datetime         not null
 #
 class Letter < ApplicationRecord
+
+  def themes
+    Theme.where(id: theme_ids)
+  end
+
+  def theme_ids
+    articles.map { |article| article.themes.pluck(:id) }.flatten.uniq
+  end
+
+  def articles
+    Article.where('articles.created_at >= ? AND articles.created_at <= ?', starting_at.to_date, ending_at.to_date)
+  end
+
+  def to_s
+    "#{title}"
+  end
 end

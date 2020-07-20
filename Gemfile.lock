@@ -85,7 +85,7 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
-    curation (1.0)
+    curation (1.1)
       metainspector
       nokogiri
     devise (4.7.1)

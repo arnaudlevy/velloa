@@ -1,19 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Starting at:</strong>
-  <%= @letter.starting_at %>
-</p>
-
-<p>
-  <strong>Ending at:</strong>
-  <%= @letter.ending_at %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @letter.title %>
-</p>
-
-<%= link_to 'Edit', edit_letter_path(@letter) %> |
-<%= link_to 'Back', letters_path %>
+<% content_for :title, "#{@theme}" %>
+<div class="letter">
+  <header>
+    <h1><%= @letter %></h1>
+    <p>
+      <%= @letter.starting_at.strftime '%d/%m' %> -
+      <%= @letter.ending_at.strftime '%d/%m/%Y' %>
+    </p>
+    <%= link_to 'Edit', edit_letter_path(@letter) %>
+  </header>
+  <div class="row">
+    <div class="offset-md-3 col-md-6">
+      <% @letter.themes.each do |theme| %>
+        <h2><%= theme %></h2>
+        <% @letter.articles.for_theme(theme).each do |article| %>
+          <div>
+            <p><%= article.analysis %></p>
+            <table>
+              <tr>
+                <td><%= image_tag article.image, width: 80 %></td>
+                <td style="font-size: 10px; vertical-align: top; padding-left: 10px">
+                  <%= link_to article.url, article.url, target: :_blank %><br>
+                  <%= article.source %>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <hr>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

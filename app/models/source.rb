@@ -17,10 +17,10 @@ class Source < ApplicationRecord
   def self.from_url(url)
     uri = URI(url)
     domain = "#{uri.scheme}://#{uri.host}"
-    source = where(url: domain).first_or_initialize
     page = Curation::Page.new domain
-    source.name = page.title if source.name.nil?
-    source.image = page.image if source.image.nil?
+    source = where(url: domain).first_or_initialize
+    source.name = page.title if source.name.blank?
+    source.image = page.image if source.image.blank?
     source.save
     source
   end
