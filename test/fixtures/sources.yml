@@ -3,6 +3,7 @@
 # Table name: sources
 #
 #  id         :bigint           not null, primary key
+#  country    :string
 #  image      :text
 #  name       :string
 #  url        :string

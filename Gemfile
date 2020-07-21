@@ -12,7 +12,9 @@ gem 'popper_js'
 gem 'simple_form'
 gem 'jquery-rails'
 gem 'devise'
+gem 'devise-i18n'
 gem 'cancancan'
+gem 'country_select'
 gem 'curation'#, path: '../curation'
 gem 'bootsnap', '>= 1.4.2', require: false
 
