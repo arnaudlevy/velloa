@@ -1,6 +1,6 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
   var url = 'https://www.velloa.fr/articles/from_url.json',
-      url = 'http://localhost:3000/articles/from_url.json',
+      // url = 'http://localhost:3000/articles/from_url.json',
       params = 'article[url]=' + tab.url,
       xhr = new XMLHttpRequest();
   chrome.tabs.executeScript(tab.id, {
