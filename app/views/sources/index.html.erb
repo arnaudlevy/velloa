@@ -7,6 +7,7 @@
       <%= link_to source do %>
         <article class="sources__source">
           <h1><%= source %></h1>
+          <p><%= source.country_name %></p>
           <% unless source.image.nil? %>
             <div class="sources__source__image">
               <%= image_tag source.image %>
