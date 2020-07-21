@@ -28,6 +28,12 @@ class Source < ApplicationRecord
     source
   end
 
+  def country_name
+    c = ISO3166::Country[self.country]
+    return nil if c.nil?
+    c.translations[I18n.locale.to_s] || c.name
+  end
+
   def to_s
     "#{name}"
   end

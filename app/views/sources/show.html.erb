@@ -2,7 +2,7 @@
 <div class="source">
   <header>
     <h1><%= @source %></h1>
-    <p><%= CountrySelect::FORMATS[@source.country.to_sym] %></p>
+    <p><%= @source.country_name %></p>
     <%= link_to 'Edit', edit_source_path(@source) %>
     <%= link_to 'Destroy', @source, method: :delete, data: { confirm: 'Are you sure?' } %>
   </header>
