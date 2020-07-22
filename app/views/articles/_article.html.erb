@@ -1,8 +1,10 @@
 <article class="card article">
   <%= link_to article do %>
-    <p class="article__analysis">
-      <%= article.analysis %>
-    </p>
+    <% unless article.analysis.blank? %>
+      <p class="article__analysis">
+        <%= article.analysis %>
+      </p>
+    <% end %>
     <%= image_tag article.image, class: 'img-fluid img-fill article__image' %>
     <h1 class="article__title"><%= article %></h1>
     <p class="article__source">
