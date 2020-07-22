@@ -24,11 +24,11 @@
   &__analysis
     font-family: $serif
     font-style: italic
-    font-size: 24px
-    line-height: 24px
+    font-size: 20px
+    line-height: 22px
   &__themes
     li
-      background: black
+      background: #999999
       display: inline-block
       font-family: $sans
       font-size: 10px
@@ -44,17 +44,22 @@
       column-count: 2
   .article
     border: none
-    border-top: 1px dotted #000000
     border-bottom: 1px dotted #000000
-    padding: 15px 0
-    h1
+    padding-bottom: 15px
+    &__title
       font-size: 16px
       margin-bottom: 10px
-    img
-      filter: grayscale(1)
-      margin-bottom: 20px
-      transition: filter 0.5s
-      &:hover
-        filter: none
+    &__image
+      // filter: grayscale(1)
+      margin-bottom: 15px
+      // transition: filter 0.5s
+      // &:hover
+      //   filter: none
+    .article__image, .article__title, .article__themes, .article__source
+      opacity: 0.3
+      transition: opacity 0.5s
+    &:hover
+      .article__image, .article__title, .article__themes, .article__source
+        opacity: 1
     &__themes
       margin-bottom: 0
