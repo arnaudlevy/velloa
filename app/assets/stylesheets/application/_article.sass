@@ -8,7 +8,7 @@
     font-family: $sans
     h2
       color: #999999
-      font-weight: bold
+      font-weight: 600
       font-size: 10px
       letter-spacing: 2px
       margin-top: 40px
@@ -22,44 +22,43 @@
     font-family: $sans
     font-size: 12px
   &__analysis
-    font-family: $serif
-    font-style: italic
-    font-size: 18px
-    line-height: 22px
+    font-family: $sans
+    font-size: 16px
+    line-height: 20px
   &__themes
     li
       background: #999999
       display: inline-block
       font-family: $sans
       font-size: 10px
-      font-weight: bold
+      font-weight: 600
       text-transform: uppercase
       a
         color: white
         padding: 4px
 .articles
   .card-columns
-    column-count: 6
+    column-count: 4
     @include media-breakpoint-down(md)
-      column-count: 2
+      column-count: 1
   .article
     border: none
     border-bottom: 1px dotted #000000
-    padding-bottom: 15px
+    padding-bottom: 10px
+    &__image
+      margin-bottom: 15px
     &__title
       font-size: 16px
-      margin-bottom: 10px
-    &__image
-      // filter: grayscale(1)
-      margin-bottom: 15px
-      // transition: filter 0.5s
-      // &:hover
-      //   filter: none
-    .article__image, .article__title, .article__themes, .article__source
-      opacity: 0.3
-      transition: opacity 0.5s
-    &:hover
-      .article__image, .article__title, .article__themes, .article__source
-        opacity: 1
+      font-weight: bold
+      margin-bottom: 5px
+    &__source
+      margin-bottom: 5px
     &__themes
       margin-bottom: 0
+    @include media-breakpoint-up(md)
+      .article__image, .article__title, .article__themes, .article__source
+        opacity: 0.3
+        transition: opacity 0.5s
+      &:hover
+        .article__image, .article__title, .article__themes, .article__source
+          opacity: 1
