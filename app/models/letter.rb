@@ -20,7 +20,7 @@ class Letter < ApplicationRecord
   end
 
   def articles
-    Article.where('articles.created_at >= ? AND articles.created_at <= ?', starting_at.to_date, ending_at.to_date)
+    Article.where('DATE(articles.created_at) >= ? AND DATE(articles.created_at) <= ?', starting_at.to_date, ending_at.to_date)
   end
 
   def dates
