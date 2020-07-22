@@ -1,4 +1,4 @@
-<% content_for :title, "#{@theme}" %>
+<% content_for :title, "#{@letter}" %>
 <div class="letter">
   <header>
     <h1><%= @letter %></h1>
@@ -13,7 +13,7 @@
           <h2><%= theme %></h2>
           <% @letter.articles.for_theme(theme).each do |article| %>
             <div style="margin-bottom: 30px">
-              <p style="margin-bottom: 0"><%= article.analysis %></p>
+              <p style="margin-bottom: 10px"><%= article.analysis %></p>
               <table>
                 <tr>
                   <td style="vertical-align: top;"><%= image_tag article.image, width: 60 %></td>
