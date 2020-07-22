@@ -17,6 +17,7 @@ class Theme < ApplicationRecord
     string = "#{article.title} #{article.text}".downcase
     keywords_array.each do |keyword|
       k = keyword.strip.downcase
+      next if k.blank?
       return true if k.in? string
     end
     false
