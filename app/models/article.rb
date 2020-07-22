@@ -24,6 +24,12 @@ class Article < ApplicationRecord
   has_and_belongs_to_many :themes
   belongs_to :source
 
+  scope :between, -> (from, to) {
+    where('DATE(articles.created_at) >= ? AND DATE(articles.created_at) <= ?',
+      from.to_date,
+      to.to_date)
+  }
+  scope :analysed, -> { where.not(analysis: ['', nil])}
   scope :for_theme, -> (theme) { joins(:themes).where(themes: { id: theme }) }
   default_scope { order(created_at: :desc) }
 

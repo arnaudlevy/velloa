@@ -20,7 +20,8 @@ class Letter < ApplicationRecord
   end
 
   def articles
-    Article.where('DATE(articles.created_at) >= ? AND DATE(articles.created_at) <= ?', starting_at.to_date, ending_at.to_date)
+    Article.between(starting_at, ending_at)
+            .analysed
   end
 
   def dates
