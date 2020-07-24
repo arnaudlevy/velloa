@@ -3,11 +3,7 @@
 <div class="article">
   <% unless @article.analysis.blank? %>
     <header>
-      <div class="row">
-        <div class="offset-md-1 col-md-10">
-          <blockquote class="article__analysis"><%= @article.analysis %></blockquote>
-        </div>
-      </div>
+      <blockquote class="article__analysis"><%= @article.analysis %></blockquote>
     </header>
   <% end %>
   <div class="row">

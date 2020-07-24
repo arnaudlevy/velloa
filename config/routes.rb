@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :sources
   resources :themes
+  resources :countries, only: [:index, :show]
   resources :articles do
     collection do
       post :from_url

@@ -1,8 +1,8 @@
+<% content_for :title, 'Lettres' %>
 <header>
   <h1>Lettres</h1>
   <%= link_to 'New Letter', new_letter_path %>
 </header>
-
 <div class="row">
   <% @letters.each do |letter| %>
     <div class="col-md-3">
