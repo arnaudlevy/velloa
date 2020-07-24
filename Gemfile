@@ -16,6 +16,8 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'cancancan'
 gem 'country_select'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'curation'#, path: '../curation'
 gem 'bootsnap', '>= 1.4.2', require: false
 

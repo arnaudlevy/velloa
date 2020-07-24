@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:from_url]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.page params[:page]
   end
 
   def show

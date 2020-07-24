@@ -1,19 +1,13 @@
-<article class="card article">
+<article class="card articles__article">
   <%= link_to article do %>
     <% unless article.analysis.blank? %>
-      <p class="article__analysis">
-        <%= article.analysis %>
-      </p>
+      <blockquote class="article__analysis"><%= article.analysis %></blockquote>
     <% end %>
     <%= image_tag article.image, class: 'img-fluid img-fill article__image' %>
     <h1 class="article__title"><%= article %></h1>
     <p class="article__source">
       <%= link_to article.source, article.source %>
     </p>
-    <ul class="article__themes list-unstyled">
-      <% article.themes.each do |theme| %>
-        <li><%= link_to theme, theme %></li>
-      <% end %>
-    </ul>
+    <%= render 'themes/tags', article: article %>
   <% end %>
 </article>

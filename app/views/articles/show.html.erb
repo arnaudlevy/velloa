@@ -1,42 +1,38 @@
 <% content_for :title, "#{@article}" %>
 
-<header>
-  <div class="row">
-    <div class="offset-md-1 col-md-10">
-      <h1><%= @article.analysis %></h1>
-    </div>
-  </div>
-</header>
-
 <div class="article">
+
+  <header>
+    <div class="row">
+      <div class="offset-md-1 col-md-10">
+        <blockquote class="article__analysis"><%= @article.analysis %></blockquote>
+        <%= link_to 'Edit', edit_article_path(@article) %>
+        <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </header>
+
   <div class="row">
     <div class="offset-md-2 col-md-3 article__meta">
       <%= image_tag @article.image, class: 'img-fluid img-fill' %>
-      <h2>Date</h2>
+      <h2>Date de curation</h2>
       <p><%= l @article.created_at.to_date %></p>
       <h2>Source</h2>
       <p><%= link_to @article.source, @article.source %></p>
       <% if @article.themes.any? %>
         <h2>Thèmes</h2>
-        <ul class="list-unstyled">
-          <% @article.themes.each do |theme| %>
-            <li><%= link_to theme, theme %></li>
-          <% end %>
-        </ul>
+        <%= render 'themes/tags', article: @article %>
       <% end %>
-      <h2>Original</h2>
-      <p><%= link_to 'Consulter', @article.url, target: :_blank %></p>
-      <h2>Actions</h2>
-      <p>
-        <%= link_to 'Edit', edit_article_path(@article) %>
-        <%= link_to 'Destroy', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
     </div>
     <div class="offset-md-1 col-md-5">
-      <h1><%= @article %></h1>
+      <h1 class="article__title"><%= @article %></h1>
       <div class="article__imported_text">
         <%= simple_format @article.text %>
       </div>
+      <%= link_to 'Lire l\'article',
+                  @article.url,
+                  target: :_blank,
+                  class: 'btn btn-light btn-sm mt-4' %>
     </div>
   </div>
 </div>
