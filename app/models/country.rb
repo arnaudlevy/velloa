@@ -2,14 +2,15 @@ class Country
   attr_reader :id
 
   def self.all
-    Source.where.not(country: [nil, ''])
-          .pluck(:country)
+    Source.where.not(country_id: [nil, ''])
+          .pluck(:country_id)
           .uniq
           .sort
           .map { |id| Country.new id }
   end
 
   def self.find(id)
+    return if id.blank?
     Country.new id
   end
 
@@ -22,10 +23,12 @@ class Country
   end
 
   def sources
-    @sources ||= Source.where(country: id)
+    @sources ||= Source.where(country_id: id)
   end
 
   def to_s
-    "#{ISO3166::Country[id]}"
+    c = ISO3166::Country[id]
+    return nil if c.nil?
+    c.translations[I18n.locale.to_s] || c.name
   end
 end

@@ -3,12 +3,12 @@
 # Table name: sources
 #
 #  id         :bigint           not null, primary key
-#  country    :string
 #  image      :text
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  country_id :string
 #
 class Source < ApplicationRecord
   has_many :articles, dependent: :destroy
@@ -28,10 +28,8 @@ class Source < ApplicationRecord
     source
   end
 
-  def country_name
-    c = ISO3166::Country[self.country]
-    return nil if c.nil?
-    c.translations[I18n.locale.to_s] || c.name
+  def country
+    @country ||= Country.find(country_id)
   end
 
   def to_s

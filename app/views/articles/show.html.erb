@@ -13,6 +13,10 @@
       <p><%= l @article.created_at.to_date %></p>
       <h2>Source</h2>
       <p><%= link_to @article.source, @article.source %></p>
+      <% if @article.source.country %>
+        <h2>Pays</h2>
+        <p><%= link_to @article.source.country, country_path(@article.source.country.id) %></p>
+      <% end %>
       <% if @article.themes.any? %>
         <h2>Thèmes</h2>
         <%= render 'themes/tags', article: @article %>

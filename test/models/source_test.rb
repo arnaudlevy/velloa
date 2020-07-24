@@ -3,12 +3,12 @@
 # Table name: sources
 #
 #  id         :bigint           not null, primary key
-#  country    :string
 #  image      :text
 #  name       :string
 #  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  country_id :string
 #
 require 'test_helper'
 

@@ -2,7 +2,9 @@
 <div class="source">
   <header>
     <h1><%= @source %></h1>
-    <p><%= @source.country_name %></p>
+    <% if @source.country %>
+      <p><%= link_to @source.country, country_path(@source.country.id) %></p>
+    <% end %>
     <%= link_to 'Edit', edit_source_path(@source) %>
     <%= link_to 'Destroy', @source, method: :delete, data: { confirm: 'Are you sure?' } %>
   </header>
