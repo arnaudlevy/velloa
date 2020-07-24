@@ -8,6 +8,7 @@ class ThemesController < ApplicationController
 
   # GET /themes/1
   def show
+    @articles = @theme.articles.page params[:page]
   end
 
   # GET /themes/new
