@@ -1,0 +1,12 @@
+<% content_for :title, 'Pays' %>
+<header>
+  <h1>Pays</h1>
+</header>
+<div class="row">
+  <% @countries.each do |country| %>
+    <div class="col-md-4 mb-5">
+      <h2><%= link_to country, country_path(country.id) %></h2>
+      <p><%= country.articles.count %> articles</p>
+    </div>
+  <% end %>
+</div>
