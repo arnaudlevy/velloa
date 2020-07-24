@@ -18,7 +18,7 @@
                 <tr>
                   <td style="vertical-align: top;"><%= image_tag article.image, width: 60 %></td>
                   <td style="font-size: 12px; vertical-align: top; padding-left: 10px">
-                    <%= article.source.country_name %> |
+                    <%= article.source.country if article.source.country %> |
                     <%= link_to article.source, article.source.url, target: :_blank %> |
                     <%= link_to article.url, article.url, target: :_blank %>
                   </td>
