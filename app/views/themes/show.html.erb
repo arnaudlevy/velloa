@@ -3,7 +3,14 @@
 <div class="theme">
   <header>
     <h1><%= @theme %></h1>
-    <%= link_to 'Edit', edit_theme_path(@theme) %>
+    <%= link_to 'Modifier',
+                edit_theme_path(@theme),
+                class: 'btn btn-light btn-sm' if can? :edit, @theme %>
+    <%= link_to 'Supprimer',
+                @theme,
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-light btn-sm' if can? :delete, @theme %>
   </header>
   <div class="articles">
     <div class="card-columns">

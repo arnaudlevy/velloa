@@ -1,29 +1,20 @@
 class SourcesController < ApplicationController
-  before_action :set_source, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
-  # GET /sources
-  # GET /sources.json
   def index
-    @sources = Source.all
   end
 
-  # GET /sources/1
-  # GET /sources/1.json
   def show
     @articles = @source.articles.page params[:page]
   end
 
-  # GET /sources/new
   def new
     @source = Source.new
   end
 
-  # GET /sources/1/edit
   def edit
   end
 
-  # POST /sources
-  # POST /sources.json
   def create
     @source = Source.new(source_params)
 
@@ -38,8 +29,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /sources/1
-  # PATCH/PUT /sources/1.json
   def update
     respond_to do |format|
       if @source.update(source_params)
@@ -52,8 +41,6 @@ class SourcesController < ApplicationController
     end
   end
 
-  # DELETE /sources/1
-  # DELETE /sources/1.json
   def destroy
     @source.destroy
     respond_to do |format|
@@ -63,13 +50,8 @@ class SourcesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_source
-      @source = Source.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def source_params
-      params.require(:source).permit(:name, :url, :country_id)
-    end
+  def source_params
+    params.require(:source).permit(:name, :url, :country_id)
+  end
 end

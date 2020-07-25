@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
   skip_before_action :verify_authenticity_token, only: [:from_url]
 
   def index
-    @articles = Article.all.page params[:page]
+    @articles = @articles.page params[:page]
   end
 
   def show
@@ -62,13 +62,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:source_id, :url, :title, :text, :analysis, :image, theme_ids: [])
-    end
+  def article_params
+    params.require(:article).permit(:source_id, :url, :title, :text, :analysis, :image, theme_ids: [])
+  end
 end

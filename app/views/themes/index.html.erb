@@ -2,7 +2,9 @@
 <div class="themes">
   <header>
     <h1>Thèmes</h1>
-    <%= link_to 'New Theme', new_theme_path %>
+    <%= link_to 'Nouveau thème',
+                new_theme_path,
+                class: 'btn btn-light btn-sm' if can? :create, Theme %>
   </header>
   <div class="row">
     <% @themes.each do |theme| %>

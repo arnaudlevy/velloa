@@ -1,7 +1,9 @@
 <% content_for :title, 'Lettres' %>
 <header>
   <h1>Lettres</h1>
-  <%= link_to 'New Letter', new_letter_path %>
+  <%= link_to 'Nouvelle lettre',
+              new_letter_path,
+              class: 'btn btn-light btn-sm' if can? :create, Letter %>
 </header>
 <div class="row">
   <% @letters.each do |letter| %>

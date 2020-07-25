@@ -5,13 +5,19 @@
     <% if @source.country %>
       <p><%= link_to @source.country, country_path(@source.country.id) %></p>
     <% end %>
-    <%= link_to 'Edit', edit_source_path(@source) %>
-    <%= link_to 'Destroy', @source, method: :delete, data: { confirm: 'Are you sure?' } %>
   </header>
   <div class="row">
     <div class="col-md-2">
       <%= image_tag @source.image, class: 'img-fluid img-fill' unless @source.image.nil? %>
       <p class="small mt-4"><%= link_to @source.url, @source.url, target: :_blank %></p>
+      <%= link_to 'Modifier',
+                  edit_source_path(@source),
+                  class: 'btn btn-light btn-sm' if can? :edit, @source %>
+      <%= link_to 'Supprimer',
+                  @source,
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' },
+                  class: 'btn btn-light btn-sm' if can? :delete, @source %>
     </div>
     <div class="offset-md-1 col-md-9">
       <div class="articles">

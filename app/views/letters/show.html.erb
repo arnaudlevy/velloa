@@ -3,8 +3,14 @@
   <header>
     <h1><%= @letter %></h1>
     <p><%= @letter.dates %></p>
-    <%= link_to 'Edit', edit_letter_path(@letter) %>
-    <%= link_to 'Destroy', @letter, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Modifier',
+                edit_letter_path(@letter),
+                class: 'btn btn-light btn-sm' if can? :edit, @letter %>
+    <%= link_to 'Supprimer',
+                @letter,
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-light btn-sm' if can? :delete, @letter %>
   </header>
   <div class="row">
     <div class="offset-md-3 col-md-6">
