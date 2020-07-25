@@ -10,22 +10,22 @@
     <div class="col-md-5 article__meta mb-5">
       <%= image_tag @article.image, class: 'img-fluid img-fill' %>
       <div class="row">
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-lg-3">
           <h2>Date</h2>
           <p><%= l (@article.published_at || @article.created_at.to_date) %></p>
         </div>
-        <div class="col-6 col-md-3">
+        <div class="col-6 col-lg-3">
           <h2>Source</h2>
           <p><%= link_to @article.source, @article.source %></p>
         </div>
         <% if @article.source.country %>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-lg-3">
             <h2>Pays</h2>
             <p><%= link_to @article.source.country, country_path(@article.source.country.id) %></p>
           </div>
         <% end %>
         <% if @article.themes.any? %>
-          <div class="col-6 col-md-3">
+          <div class="col-6 col-lg-3">
             <h2>Thèmes</h2>
             <%= render 'themes/tags', article: @article %>
           </div>
