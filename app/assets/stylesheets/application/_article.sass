@@ -1,5 +1,7 @@
 .article
   &__analysis
+    max-width: 1024px
+    margin: 0 auto
     font-size: 24px
     &::before, &::after
       color: $color
@@ -12,25 +14,11 @@
     &::after
       content: '”'
       padding-left: 4px
-  &__themes
-    line-height: 11px
-    margin-bottom: 0
-    li
-      background: #999999
-      display: inline-block
-      font-size: 9px
-      font-weight: 600
-      text-transform: uppercase
-      a
-        color: white
-        display: block
-        padding: 2px 4px
   &__title
     font-size: 24px
     font-weight: bold
     margin-bottom: 15px
   &__meta
-    text-align: right
     font-family: $sans
     h2
       color: #999999
@@ -68,10 +56,14 @@
           vertical-align: -20px
       &__image
         margin-bottom: 10px
+      &__meta
+        font-size: 11px
+      &__date
+        color: #999999
       &__title
         font-size: 14px
+        line-height: 18px
         font-weight: bold
         margin-bottom: 5px
-      &__source
-        font-size: 11px
-        margin-bottom: 5px
+      &__themes
+        float: right

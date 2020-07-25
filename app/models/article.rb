@@ -2,15 +2,16 @@
 #
 # Table name: articles
 #
-#  id         :bigint           not null, primary key
-#  analysis   :text
-#  image      :text
-#  text       :text
-#  title      :string
-#  url        :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  source_id  :bigint           not null
+#  id           :bigint           not null, primary key
+#  analysis     :text
+#  image        :text
+#  published_at :date
+#  text         :text
+#  title        :string
+#  url          :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  source_id    :bigint           not null
 #
 # Indexes
 #
@@ -41,6 +42,7 @@ class Article < ApplicationRecord
     article.title = page.title
     article.text = page.text
     article.image = page.image
+    article.published_at = page.date
     article.source = Source.from_url url
     article.save
     article

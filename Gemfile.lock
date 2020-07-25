@@ -65,7 +65,7 @@ GEM
       execjs
     bcrypt (3.1.15)
     bindex (0.8.1)
-    bootsnap (1.4.6)
+    bootsnap (1.4.7)
       msgpack (~> 1.0)
     bootstrap (4.5.0)
       autoprefixer-rails (>= 9.1.0)
@@ -95,7 +95,7 @@ GEM
       countries (~> 3.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.6)
-    curation (1.6)
+    curation (1.7)
       metainspector
       nokogiri
     devise (4.7.2)
@@ -127,7 +127,7 @@ GEM
       activesupport (>= 4.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.8.4)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     i18n_data (0.10.0)
     jquery-rails (4.4.0)

@@ -7,20 +7,30 @@
     </header>
   <% end %>
   <div class="row">
-    <div class="offset-md-2 col-md-3 article__meta">
+    <div class="col-md-5 article__meta mb-5">
       <%= image_tag @article.image, class: 'img-fluid img-fill' %>
-      <h2>Date de curation</h2>
-      <p><%= l @article.created_at.to_date %></p>
-      <h2>Source</h2>
-      <p><%= link_to @article.source, @article.source %></p>
-      <% if @article.source.country %>
-        <h2>Pays</h2>
-        <p><%= link_to @article.source.country, country_path(@article.source.country.id) %></p>
-      <% end %>
-      <% if @article.themes.any? %>
-        <h2>Thèmes</h2>
-        <%= render 'themes/tags', article: @article %>
-      <% end %>
+      <div class="row">
+        <div class="col-6 col-md-3">
+          <h2>Date</h2>
+          <p><%= l (@article.published_at || @article.created_at.to_date) %></p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h2>Source</h2>
+          <p><%= link_to @article.source, @article.source %></p>
+        </div>
+        <% if @article.source.country %>
+          <div class="col-6 col-md-3">
+            <h2>Pays</h2>
+            <p><%= link_to @article.source.country, country_path(@article.source.country.id) %></p>
+          </div>
+        <% end %>
+        <% if @article.themes.any? %>
+          <div class="col-6 col-md-3">
+            <h2>Thèmes</h2>
+            <%= render 'themes/tags', article: @article %>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="offset-md-1 col-md-5">
       <h1 class="article__title"><%= @article %></h1>
