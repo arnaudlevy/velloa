@@ -1,7 +1,72 @@
 <% content_for :title, 'Pays' %>
-<header>
-  <h1>Pays</h1>
-</header>
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+
+<div id="container"></div>
+
+<script type="text/javascript">
+<% max = 0 %>
+var data = <%= raw @countries.map { |country|
+      max = [max, country.articles.count].max
+      {
+        code: country.id,
+        name: country.to_s,
+        value: country.articles.count
+      }
+    }.to_json %>,
+    max = <%= max %>;
+
+// Prevent logarithmic errors in color calculation
+data.forEach(function (p) {
+    p.value = (p.value < 1 ? 1 : p.value);
+});
+
+// Initiate the chart
+Highcharts.mapChart('container', {
+
+    chart: {
+        map: 'custom/world',
+        height: 600
+    },
+
+    title: false,
+
+    legend: {
+        align: 'left',
+        title: {
+            text: 'Articles'
+        }
+    },
+
+    tooltip: {
+        backgroundColor: 'none',
+        borderWidth: 0,
+        shadow: false,
+        useHTML: true,
+        padding: 0,
+        pointFormat: '{point.name}<br>' +
+            '<span style="font-size:30px">{point.value}</span>',
+        positioner: function () {
+            return { x: 0, y: 400 };
+        }
+    },
+
+    colorAxis: {
+        min: 0,
+        max: <%= max %>,
+        minColor: '#FFFFFF',
+        maxColor: '#F23535'
+    },
+
+    series: [{
+        data: data,
+        joinBy: ['iso-a2', 'code'],
+        name: 'Articles',
+        nullColor: 'white'
+    }]
+});
+</script>
 <div class="row">
   <% @countries.each do |country| %>
     <div class="col-md-4 mb-5">
