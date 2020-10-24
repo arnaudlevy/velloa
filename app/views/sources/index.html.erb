@@ -10,7 +10,7 @@
           <% if source.country %>
             <p><%= source.country %></p>
           <% end %>
-          <% unless source.image.nil? %>
+          <% unless source.image.blank? %>
             <div class="sources__source__image">
               <img src="<%= source.image %>" alt="<%= source %>">
             </div>
