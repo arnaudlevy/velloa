@@ -8,7 +8,7 @@
   </header>
   <div class="row">
     <div class="col-md-2">
-      <% unless @source.image.nil? %>
+      <% unless @source.image.blank? %>
         <img src="<%= @source.image %>" alt="<%= @source %>" class="img-fluid img-fill">
       <% end %>
       <p class="small mt-4"><%= link_to @source.url, @source.url, target: :_blank %></p>
