@@ -12,7 +12,7 @@
           <% end %>
           <% unless source.image.nil? %>
             <div class="sources__source__image">
-              <%= image_tag source.image %>
+              <img src="<%= source.image %>" alt="<%= source %>">
             </div>
           <% end %>
         </article>

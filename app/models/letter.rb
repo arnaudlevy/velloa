@@ -25,7 +25,7 @@ class Letter < ApplicationRecord
   end
 
   def dates
-    "#{starting_at.strftime '%d/%m'} - #{ending_at.strftime '%d/%m/%Y'}"
+    "#{starting_at&.strftime '%d/%m'} - #{ending_at&.strftime '%d/%m/%Y'}"
   end
 
   def to_s
