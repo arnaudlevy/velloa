@@ -1,11 +1,6 @@
 <article class="articles__article">
   <% if article.image.blank? %>
     <h1 class="article__title"><%= link_to article, article %></h1>
-    <% unless article.analysis.blank? %>
-      <%= link_to article do %>
-        <blockquote class="article__analysis"><%= article.analysis %></blockquote>
-      <% end %>
-    <% end %>
     <div class="article__themes">
       <%= render 'themes/tags', article: article %>
     </div>
@@ -17,15 +12,13 @@
         <%= l (article.published_at || article.created_at.to_date) %>
       </span>
     </div>
+    <% unless article.analysis.blank? %>
+      <blockquote class="article__analysis"><%= article.analysis %></blockquote>
+    <% end %>
   <% else %>
     <div class="row">
       <div class="col-md-8">
         <h1 class="article__title"><%= link_to article, article %></h1>
-        <% unless article.analysis.blank? %>
-          <%= link_to article do %>
-            <blockquote class="article__analysis"><%= article.analysis %></blockquote>
-          <% end %>
-        <% end %>
         <div class="article__themes">
           <%= render 'themes/tags', article: article %>
         </div>
@@ -44,5 +37,8 @@
         <% end %>
       </div>
     </div>
+    <% unless article.analysis.blank? %>
+      <blockquote class="article__analysis"><%= article.analysis %></blockquote>
+    <% end %>
   <% end %>
 </article>
