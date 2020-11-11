@@ -1,20 +1,27 @@
 <% content_for :title, 'Sources' %>
 <div class="sources">
-  <header><h1>Sources</h1></header>
+  <header><h1><%= @sources.count %> sources</h1></header>
   <div class="row">
     <% @sources.each do |source| %>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <%= link_to source do %>
         <article class="sources__source">
           <h1><%= source %></h1>
-          <% if source.country %>
-            <p><%= source.country %></p>
-          <% end %>
-          <% unless source.image.blank? %>
-            <div class="sources__source__image">
-              <img src="<%= source.image %>" alt="<%= source %>">
+          <div class="row">
+            <div class="col-md-6">
+              <p>
+                <% if source.country %>
+                  <b><%= source.country %></b><br>
+                <% end %>
+                <%= source.articles.count %> article<%= 's' if source.articles.count > 1 %>
+              </p>
             </div>
-          <% end %>
+            <div class="col-md-6">
+              <% unless source.image.blank? %>
+                <img src="<%= source.image %>" alt="<%= source %>" class="img-fluid">
+              <% end %>
+            </div>
+          </div>
         </article>
       <% end %>
     </div>

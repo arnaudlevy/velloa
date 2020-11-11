@@ -5,8 +5,8 @@ class Country
     Source.where.not(country_id: [nil, ''])
           .pluck(:country_id)
           .uniq
-          .sort
           .map { |id| Country.new id }
+          .sort { |a, b| a.to_s.parameterize <=> b.to_s.parameterize }
   end
 
   def self.find(id)

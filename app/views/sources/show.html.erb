@@ -5,29 +5,22 @@
     <% if @source.country %>
       <p><%= link_to @source.country, country_path(@source.country.id) %></p>
     <% end %>
+    <p class="small text-muted"><%= link_to @source.url, @source.url, target: :_blank %></p>
+    <% unless @source.image.blank? %>
+      <img src="<%= @source.image %>" alt="<%= @source %>" class="img-fluid img-fill">
+    <% end %>
+    <%= link_to 'Modifier',
+                edit_source_path(@source),
+                class: 'btn btn-light btn-sm' if can? :edit, @source %>
+    <%= link_to 'Supprimer',
+                @source,
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-light btn-sm' if can? :delete, @source %>
+
   </header>
-  <div class="row">
-    <div class="col-md-2">
-      <% unless @source.image.blank? %>
-        <img src="<%= @source.image %>" alt="<%= @source %>" class="img-fluid img-fill">
-      <% end %>
-      <p class="small mt-4"><%= link_to @source.url, @source.url, target: :_blank %></p>
-      <%= link_to 'Modifier',
-                  edit_source_path(@source),
-                  class: 'btn btn-light btn-sm' if can? :edit, @source %>
-      <%= link_to 'Supprimer',
-                  @source,
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' },
-                  class: 'btn btn-light btn-sm' if can? :delete, @source %>
-    </div>
-    <div class="offset-md-1 col-md-9">
-      <div class="articles">
-        <div class="card-columns">
-          <%= render @articles %>
-        </div>
-        <%= paginate @articles, theme: 'twitter-bootstrap-4' %>
-      </div>
-    </div>
+  <div class="row justify-content-between">
+    <%= render @articles %>
   </div>
+  <%= paginate @articles, theme: 'twitter-bootstrap-4' %>
 </div>

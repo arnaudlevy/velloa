@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       post :from_url
     end
   end
-  root to: 'articles#index'
+  root to: 'home#index'
 end

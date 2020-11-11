@@ -1,22 +1,3 @@
-<article class="card articles__article">
-  <% unless article.analysis.blank? %>
-    <%= link_to article do %>
-      <blockquote class="article__analysis"><%= article.analysis %></blockquote>
-    <% end %>
-  <% end %>
-  <%= link_to article do %>
-    <%= image_tag article.image, class: 'img-fluid img-fill article__image' %>
-  <% end %>
-  <h1 class="article__title"><%= link_to article, article %></h1>
-  <div class="article__themes">
-    <%= render 'themes/tags', article: article %>
-  </div>
-  <div class="article__meta">
-    <span class="article__source">
-      <%= link_to article.source, article.source %>
-    </span>
-    <span class="article__date">
-      <%= l (article.published_at || article.created_at.to_date) %>
-    </span>
-  </div>
-</article>
+<div class="col-md-5">
+  <%= render 'articles/article.raw', article: article %>
+</div>

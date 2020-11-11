@@ -4,7 +4,7 @@
     <h1><%= @country %></h1>
   </header>
   <div class="articles">
-    <div class="card-columns">
+    <div class="row justify-content-between">
       <%= render @articles %>
     </div>
     <%= paginate @articles, theme: 'twitter-bootstrap-4' %>
